@@ -70,7 +70,7 @@ Task("Test")
 
    ReportGenerator(
         new GlobPattern("./tests/**/TestResults/**/*.xml"),
-        "./artifacts/TestReport");
+        "./artifacts/TestResults");
 });
 
 
