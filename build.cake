@@ -1,3 +1,5 @@
+#tool "nuget:?package=ReportGenerator&version=5.1.9"
+
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
@@ -62,8 +64,13 @@ Task("Test")
          NoRestore = true,
          NoBuild = true,
          Verbosity = dotNetVerbosity,
+         Collectors = { "XPlat Code Coverage" }
       }
    );
+
+   ReportGenerator(
+        new GlobPattern("./tests/**/TestResults/**/*.xml"),
+        "./artifacts/TestReport");
 });
 
 
