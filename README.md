@@ -15,12 +15,12 @@ This template contains explicit and opinionated configuration files, adjust or d
 * `Directory.Build.props` and `tests/Directory.Build.props` for cross-project configuration
 
 ### Autmatic versioning
-This project uses [GitVersion](https://gitversion.net/) in *Mainline* mode. Both local tool and
-MSBuild taks are included in the package.
+This project uses [GitVersion](https://gitversion.net/) in *Mainline* mode. Using the MSBuild Task.
+GitVersion will also be installed by Cake to display Version in the Setup phase
 
 > WARNING:
 > 
-> **GitFlow**: If you use GitFlow then make sure run `dotnet gitversion init` and update the `GitVersion.yaml`
+> **GitFlow**: If you use GitFlow then make sure run `.\tools\dotnet-gitversion.exe init` and update the `GitVersion.yaml`
 > accordingly
 > 
 > **Mainline**: Do not set the `next-version` property in mainline mode. Use `git tag` instead to 
