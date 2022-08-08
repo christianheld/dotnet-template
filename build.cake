@@ -1,5 +1,3 @@
-#tool "nuget:?package=ReportGenerator&version=5.1.9"
-
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
@@ -56,21 +54,22 @@ Task("Test")
     .IsDependentOn("Compile")
     .Does(() =>
 {
-   DotNetTest(
-      "./NetProject.sln",
-      new DotNetTestSettings
-      {
-         Configuration = configuration,
-         NoRestore = true,
-         NoBuild = true,
-         Verbosity = dotNetVerbosity,
-         Collectors = { "XPlat Code Coverage" }
-      }
-   );
-
-   ReportGenerator(
-        new GlobPattern("./tests/**/TestResults/**/*.xml"),
-        "./artifacts/TestResults");
+    DotNetTest(
+       "./NetProject.sln",
+       new DotNetTestSettings
+       {
+          Configuration = configuration,
+          NoRestore = true,
+          NoBuild = true,
+          Verbosity = dotNetVerbosity,
+          Collectors = { "XPlat Code Coverage" }
+       }
+    );
+    
+    DotNetTool(
+        "reportgenerator " + 
+            "-reports:./tests/**/coverage.cobertura.xml " + 
+            "-targetdir:artifacts/TestResults");
 });
 
 
