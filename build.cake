@@ -54,18 +54,28 @@ Task("Test")
     .IsDependentOn("Compile")
     .Does(() =>
 {
-   DotNetTest(
-      "./NetProject.sln",
-      new DotNetTestSettings
-      {
-         Configuration = configuration,
-         NoRestore = true,
-         NoBuild = true,
-         Verbosity = dotNetVerbosity,
-      }
-   );
+    DotNetTest(
+       "./NetProject.sln",
+       new DotNetTestSettings
+       {
+          Configuration = configuration,
+          NoRestore = true,
+          NoBuild = true,
+          Verbosity = dotNetVerbosity,
+          Collectors = { "XPlat Code Coverage" }
+       }
+    );
 });
 
+Task("TestReport")
+    .IsDependentOn("Test")
+    .Does(() => 
+{
+    DotNetTool(
+        "reportgenerator " + 
+            "-reports:./tests/**/coverage.cobertura.xml " + 
+            "-targetdir:artifacts/TestReport");
+});
 
 Task("Default")
    .IsDependentOn("CleanArtifacts")
