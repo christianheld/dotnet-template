@@ -1,3 +1,6 @@
+#tool "dotnet:?package=GitVersion.Tool&version=5.10.3"
+#tool "dotnet:?package=dotnet-reportgenerator-globaltool&version=5.1.9"
+
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
@@ -8,6 +11,12 @@ var configuration = Argument("configuration", "Release");
 var dotNetVerbosity = DotNetVerbosity.Minimal;
 var msBuildSettings = new DotNetMSBuildSettings()
         .SetMaxCpuCount(0);
+
+Setup(context =>
+{
+    var version = context.GitVersion();
+    context.Information($"Version: {version.FullSemVer}");
+});
 
 ///////////////////////////////////////////////////////////////////////////////
 // TASKS
