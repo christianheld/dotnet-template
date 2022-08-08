@@ -23,10 +23,4 @@ jobs:
       run: dotnet tool restore
     - name: Build
       run: dotnet cake
-    - name: Upload Test Results
-      uses: actions/upload-artifact@v3.1.0
-      if: success() || failure()
-      with:
-        name: TestResults
-        path: artifacts/TestResults
-
+ 

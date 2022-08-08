@@ -65,13 +65,17 @@ Task("Test")
           Collectors = { "XPlat Code Coverage" }
        }
     );
-    
+});
+
+Task("TestReport")
+    .IsDependentOn("Test")
+    .Does(() => 
+{
     DotNetTool(
         "reportgenerator " + 
             "-reports:./tests/**/coverage.cobertura.xml " + 
-            "-targetdir:artifacts/TestResults");
+            "-targetdir:artifacts/TestReport");
 });
-
 
 Task("Default")
    .IsDependentOn("CleanArtifacts")
