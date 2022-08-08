@@ -80,10 +80,9 @@ Task("TestReport")
     .IsDependentOn("Test")
     .Does(() => 
 {
-    DotNetTool(
-        "reportgenerator " + 
-            "-reports:./tests/**/coverage.cobertura.xml " + 
-            "-targetdir:artifacts/TestReport");
+    ReportGenerator(
+        new GlobPattern("./tests/**/coverage.cobertura.xml"),
+        "./artifacts/TestReport");
 });
 
 Task("Default")
