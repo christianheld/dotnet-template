@@ -23,7 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{A5181A0E-B
 		Directory.Packages.props = Directory.Packages.props
 		global.json = global.json
 		README.md = README.md
-		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "src\WebApp\WebApp.csproj", "{EAC7E52C-83FD-47FA-A8F2-D0970EAEB9B4}"
