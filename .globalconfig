@@ -35,7 +35,7 @@ dotnet_diagnostic.CA2101.severity = warning
 
 # Maintainability
 dotnet_diagnostic.CA1501.severity = warning
-dotnet_diagnostic.CA1502.severity = warning
+dotnet_diagnostic.CA1502.severity = error
 dotnet_diagnostic.CA1505.severity = error
 dotnet_diagnostic.CA1506.severity = error
 dotnet_diagnostic.CA1507.severity = warning
