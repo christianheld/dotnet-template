@@ -3,13 +3,9 @@
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     </PropertyGroup>
 
-    <!-- Production packages -->
     <ItemGroup>
         <PackageVersion Include="GitVersion.MsBuild" Version="5.10.3" />
-    </ItemGroup>
-
-    <!-- Add test package versions here-->
-    <ItemGroup>
+        <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.8" />
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
         <PackageVersion Include="xunit" Version="2.4.2" />
         <PackageVersion Include="xunit.runner.visualstudio" Version="2.4.5" />
