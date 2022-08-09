@@ -1,4 +1,4 @@
-#pragma warning disable CA1812 // False postive for top level projects
+#pragma warning disable CA1812 // False postive for top level programs
 using NetProject;
 
 var sample = new SampleClass("World");
