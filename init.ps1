@@ -7,7 +7,7 @@ Param(
     [string] $Name,
 
     # Use central package management (still in preview)
-    [Parameter(Mandatory)]
+    [Parameter]
     [switch] $UseCentralPackageManagement
 )
 
