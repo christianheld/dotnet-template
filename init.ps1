@@ -4,12 +4,7 @@
 Param(
     # The name of the new solution
     [Parameter(Mandatory = $true)]
-    [string] $Name,
-
-    # Use central package management (still in preview)
-    [Parameter]
-    [switch] $UseCentralPackageManagement
-)
+    [string] $Name
 
 
 Get-ChildItem -Recurse -Force *.csproj | ForEach-Object { dotnet sln remove $_ }
@@ -29,16 +24,6 @@ $cakeScript = $cakeScript.Replace(
     "string solution = ""$solution"";");
 
 $cakeScript | Out-File "build.cake" -Encoding utf8NoBOM
-
-
-if (-not $UseCentralPackageManagement) {
-    Remove-Item .\Directory.Packages.props
-
-    $buildPropsFile = (Get-Item .\Directory.Build.props).FullName
-    [xml]$buildProps = Get-Content $buildPropsFile
-    $buildProps.DocumentElement.ItemGroup.PackageReference.SetAttribute("Version", "5.10.3")
-    $buildProps.Save($buildPropsFile) 
-}
 
 Remove-Item .\init.ps1
 
