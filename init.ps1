@@ -42,5 +42,4 @@ if (-not $UseCentralPackageManagement) {
 
 Remove-Item .\init.ps1
 
-Write-Output "Initialized project commit changes to complete"
-Write-Output "Commit changes to complete setup"
+Write-Output "Commit changes to git to complete initialization."
