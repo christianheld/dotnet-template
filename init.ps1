@@ -7,7 +7,8 @@ Param(
     [string] $Name,
 
     # Use central package management (still in preview)
-    [bool] $UseCentralPackageManagement = $false
+    [Parameter(Mandatory = $true)]
+    [bool] $UseCentralPackageManagement
 )
 
 Get-ChildItem -Recurse -Force *.csproj | ForEach-Object { dotnet sln remove $_ }
