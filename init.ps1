@@ -5,6 +5,7 @@ Param(
     # The name of the new solution
     [Parameter(Mandatory = $true)]
     [string] $Name
+)
 
 
 Get-ChildItem -Recurse -Force *.csproj | ForEach-Object { dotnet sln remove $_ }
