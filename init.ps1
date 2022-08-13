@@ -43,6 +43,4 @@ if (-not $UseCentralPackageManagement) {
 Remove-Item .\init.ps1
 
 Write-Output "Initialized project commit changes to complete"
-Write-Output "Run following commands to complete"
-Write-Output "git add ."
-Write-Output "git commit --amend -m ""Initial commit"""
+Write-Output "Commit changes to complete setup"
