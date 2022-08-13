@@ -42,6 +42,6 @@ if (-not $UseCentralPackageManagement) {
 
 Write-Information "Initialized project commit changes to complete"
 Write-Information "Run following commands to complete"
-Write-Information git add .
-Write-Information git commit --amend -m "Initialized Project"
-Write-Information Remove-Item .\init.ps1
+Write-Information "git add ."
+Write-Information "git commit --amend -m ""Initial commit"""
+Write-Information "Remove-Item .\init.ps1"
