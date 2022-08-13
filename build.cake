@@ -5,6 +5,8 @@
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
 
+var solution = "./NetProject.sln";
+
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
@@ -49,7 +51,7 @@ Task("Compile")
     .Does(() =>
 {
     DotNetBuild(
-        "./NetProject.sln",
+        solution,
         new DotNetBuildSettings
         {
             Configuration = configuration,
@@ -64,7 +66,7 @@ Task("Test")
     .Does(() =>
 {
     DotNetTest(
-       "./NetProject.sln",
+       solution,
        new DotNetTestSettings
        {
           Configuration = configuration,
