@@ -7,8 +7,8 @@ Param(
     [string] $Name,
 
     # Use central package management (still in preview)
-    [Parameter(Mandatory = $true)]
-    [bool] $UseCentralPackageManagement
+    [Parameter(Mandatory)]
+    [switch] $UseCentralPackageManagement
 )
 
 
@@ -40,4 +40,8 @@ if (-not $UseCentralPackageManagement) {
     $buildProps.Save($buildPropsFile) 
 }
 
-#Remove-Item -Force -Recurse .git
+Write-Information "Initialized project commit changes to complete"
+Write-Information "Run following commands to complete"
+Write-Information git add .
+Write-Information git commit --amend -m "Initialized Project"
+Write-Information Remove-Item .\init.ps1
