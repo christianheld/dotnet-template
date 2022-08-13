@@ -24,15 +24,20 @@ $solution = "$Name.sln"
 Rename-Item -Path ./NetProject.sln -NewName $solution
 
 $cakeScript = Get-Content .\build.cake
-$cakeScript.Replace(
+$cakeScript = $cakeScript.Replace(
     'string solution = "NetProject.sln";', 
     "string solution = ""$solution"";");
 
-$cakeScript | Out-File -FilePath "build.cake" -Encoding utf8NoBOM
+$cakeScript | Out-File "build.cake" -Encoding utf8NoBOM
 
 
 if (-not $UseCentralPackageManagement) {
     Remove-Item .\Directory.Packages.props
+
+    $buildPropsFile = (Get-Item .\Directory.Build.props).FullName
+    [xml]$buildProps = Get-Content $buildPropsFile
+    $buildProps.DocumentElement.ItemGroup.PackageReference.SetAttribute("Version", "5.10.3")
+    $buildProps.Save($buildPropsFile) 
 }
 
 #Remove-Item -Force -Recurse .git
