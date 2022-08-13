@@ -11,7 +11,6 @@ The project layout is inspired by David Fowler's famous [.NET Project Structure]
 This template contains explicit and opinionated configuration files, adjust or delete as needded
 
 * Explicit `global.json`, `nuget.config`
-* Central Package Versioning with `Directory.Packages.config` (Remove for project based versions)
 * `Directory.Build.props` and `tests/Directory.Build.props` for cross-project configuration
 
 ### Autmatic versioning
@@ -26,9 +25,20 @@ GitVersion will also be installed by Cake to display Version in the Setup phase
 > **Mainline**: Do not set the `next-version` property in mainline mode. Use `git tag` instead to 
 > pin versions
 
-
-
 ## Getting Started
+
+Run `init.ps1` to rename solution and remove sample code
+
+```ps
+.\init.ps1 -Name SolutionName
+```
+
+or to use Central package management
+
+```ps
+.\init.ps1 -Name SolutionName -UseCentralPackageManagement
+```
+
 
 ### Requirements
 .NET 6

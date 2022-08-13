@@ -5,6 +5,8 @@
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
 
+string solution = "NetProject.sln";
+
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
@@ -15,7 +17,9 @@ var msBuildSettings = new DotNetMSBuildSettings()
 Setup(context =>
 {
     var version = context.GitVersion();
-    context.Information($"Version: {version.FullSemVer}");
+
+    context.Information($"Solution: {solution}");
+    context.Information($"Version:  {version.FullSemVer}");
 });
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -49,7 +53,7 @@ Task("Compile")
     .Does(() =>
 {
     DotNetBuild(
-        "./NetProject.sln",
+        solution,
         new DotNetBuildSettings
         {
             Configuration = configuration,
@@ -64,7 +68,7 @@ Task("Test")
     .Does(() =>
 {
     DotNetTest(
-       "./NetProject.sln",
+       solution,
        new DotNetTestSettings
        {
           Configuration = configuration,
