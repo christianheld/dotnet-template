@@ -40,8 +40,9 @@ if (-not $UseCentralPackageManagement) {
     $buildProps.Save($buildPropsFile) 
 }
 
-Write-Information "Initialized project commit changes to complete"
-Write-Information "Run following commands to complete"
-Write-Information "git add ."
-Write-Information "git commit --amend -m ""Initial commit"""
-Write-Information "Remove-Item .\init.ps1"
+Remove-Item .\init.ps1
+
+Write-Output "Initialized project commit changes to complete"
+Write-Output "Run following commands to complete"
+Write-Output "git add ."
+Write-Output "git commit --amend -m ""Initial commit"""
