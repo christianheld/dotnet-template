@@ -1,31 +1,65 @@
+#!/usr/bin/env pwsh
+
 # .SYNOPSIS
 # Inititalize the repository
 
 Param(
     # The name of the new solution
     [Parameter(Mandatory = $true)]
-    [string] $Name
+    [string] $SolutionName,
+
+    # The project type, used for dotent new
+    [Parameter(Mandatory = $true)]
+    [string] $ProjectType,
+
+    [Parameter(Mandatory = $true)]
+    [string] $ProjectName
 )
 
+function RemoveSampleProjects {
+    Get-ChildItem -Recurse -Force *.csproj | ForEach-Object { dotnet sln remove $_ }
+    
+    Remove-Item -Force -Recurse  .\src\NetProject
+    Remove-Item -Force -Recurse  .\src\WebApp
+    
+    Remove-Item -Force -Recurse  .\tests\NetProject.Tests
+    Remove-Item -Force -Recurse  .\tests\WebApp.Tests
+}
 
-Get-ChildItem -Recurse -Force *.csproj | ForEach-Object { dotnet sln remove $_ }
+function RenameSolution {
+    $solution = "$SolutionName.sln"
+    Rename-Item -Path ./NetProject.sln -NewName $solution
+    
+    $cakeScript = Get-Content .\build.cake
+    $cakeScript = $cakeScript.Replace(
+        'string solution = "NetProject.sln";', 
+        "string solution = ""$solution"";");
+    
+    $cakeScript | Out-File "build.cake" -Encoding utf8NoBOM
+}
 
-Remove-Item -Force -Recurse  .\src\NetProject
-Remove-Item -Force -Recurse  .\src\WebApp
+function CreateNewProject {
+    mkdir ".\src\$ProjectName"
+    mkdir ".\tests\$ProjectName.Tests"
+    
+    Push-Location ".\src\$ProjectName"
+    dotnet new $ProjectType
+    Pop-Location
+    
+    Push-Location ".\tests\$ProjectName.Tests"
+    dotnet new xunit
+    dotnet add reference "..\..\src\$ProjectName"
+    Pop-Location
+    
+    Get-ChildItem -Recurse *.csproj | ForEach-Object { dotnet sln add $_ }
+}
 
-Remove-Item -Force -Recurse  .\tests\NetProject.Tests
-Remove-Item -Force -Recurse  .\tests\WebApp.Tests
-
-$solution = "$Name.sln"
-Rename-Item -Path ./NetProject.sln -NewName $solution
-
-$cakeScript = Get-Content .\build.cake
-$cakeScript = $cakeScript.Replace(
-    'string solution = "NetProject.sln";', 
-    "string solution = ""$solution"";");
-
-$cakeScript | Out-File "build.cake" -Encoding utf8NoBOM
+RemoveSampleProjects
+RenameSolution
+CreateNewProject
 
 Remove-Item .\init.ps1
+
+.\build.ps1
 
 Write-Output "Commit changes to git to complete initialization."
