@@ -1,3 +1,5 @@
+#!/usr/bin/env pwsh
+
 # .SYNOPSIS
 # Inititalize the repository
 
@@ -57,5 +59,7 @@ RenameSolution
 CreateNewProject
 
 Remove-Item .\init.ps1
+
+.\build.ps1
 
 Write-Output "Commit changes to git to complete initialization."
