@@ -13,7 +13,7 @@ This template contains explicit and opinionated configuration files, adjust or d
 * Explicit `global.json`, `nuget.config`
 * `Directory.Build.props` and `tests/Directory.Build.props` for cross-project configuration
 
-### Autmatic versioning
+### Automatic versioning
 This project uses [GitVersion](https://gitversion.net/) in *Mainline* mode. Using the MSBuild Task.
 GitVersion will also be installed by Cake to display Version in the Setup phase
 

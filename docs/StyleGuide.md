@@ -27,6 +27,10 @@ GOOD:
 #pragma warning restore xxx
 ```
 
+### Avoid `public` or `protected` fields
+Properties come almost for free, thanks to compiler optimization. Prefer using properties where
+possible. This will allow you to change implementation in a non breaking way.
+
 ## Code Style
 Follow rules defined in `.editorconfig` and make sure you have seen Definitely watch
 [ITT 2016 - Kevlin Henney - Secven Innefective Coding Habits of Many Programmers](https://youtu.be/ZsHMHukIlJY)
@@ -91,7 +95,7 @@ Methods should not exceeed column 120 and in general should not consist of more 
 
 > Why 120
 > 
-> Allow side-by-side diffs. The actual number is defined by educated guess
+> Allow side-by-side diffs. The actual number is defined by educated guess (screen size)
 
 ### Code Ordering
 Try to keep consistent order in classes. (Stick with CodeMaid defaults).
@@ -156,7 +160,21 @@ public void Method(string parameter);
 ```
 
 ### Expression Bodied Members
-Expression Bodied Members are great. However some people are overusing them just because they can.
+Expression Bodied Members are great for short single line methods. Avoid writing expression bodied
+members just becaus you can.
+
+GOOD: Clean single line method
+```csharp
+public void Save() => Save(_defaultFileName);
+```
+
+BAD:
+```csharp
+public int TooMuchCodeInExpression() => (DataSet
+    .WithFluent()
+    .AndEvenMoreFluent()
+    .OrNull() ?? SomeOtherStuff()) + 27 == 12;
+``` 
 
 #### Do not use Expression bodied methods with wrapped paramters
 Method content should be easyily distinguishable from parameters
@@ -177,4 +195,24 @@ public Task<int> MethodAsync(
 {
     return await DoSomethingAsync(veryLongString);
 }
+```
+
+### Async / Await
+* Prefer using  `await` over directly returning `Task`, see
+* Support cancellation and pass `CancellationToken` when possible.
+* Read https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md
+
+#### Do not hide asynchronous calls
+If method is `await`ed it deserves to be easily recognizable. Prefer multiple lines over hiding
+`await` in parenthesis.
+
+BAD
+```csharp
+var count = (await GetDataAsync()).Count;
+```
+
+GOOD
+```csharp
+var list = await GetDataAsync();
+var count = list.Count;
 ```
