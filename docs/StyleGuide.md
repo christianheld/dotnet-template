@@ -2,45 +2,33 @@
 
 ## C#
 
-### Code quality / maintainability
-Follow rules defined in `.globalconfig`
+### Code Analysis / Warnings
+* Follow rules defined in `.globalconfig`
+* Fix all compiler warnings of possible
 
-#### Warnings
-In general code should compile without compiler warnings. If this is not possible suppress the
-warning and make clear in the comment why the warning has been suppressed
+#### Disable Warnings
+If this is not possible suppress the
+warning and make clear in the comment why the warning has been suppressed.
 
-BAD:
-```csharp
-#pragma warning disable xxx
-    public void MethodWithWarnings()
-    {
-    }
-#pragma warning restore xxx
-```
-
-GOOD:
-```csharp
-#pragma warning disable xxx // Description why the warning has been disabled
-    public void MethodWithWarnings()
-    {
-    }
-#pragma warning restore xxx
-```
+Prefer `SuppressMessageAttribute` over `#pragma warning disable`
 
 ### Avoid `public` or `protected` fields
 Properties come almost for free, thanks to compiler optimization. Prefer using properties where
 possible. This will allow you to change implementation in a non breaking way.
 
-## Code Style
-Follow rules defined in `.editorconfig` and make sure you have seen Definitely watch
-[ITT 2016 - Kevlin Henney - Secven Innefective Coding Habits of Many Programmers](https://youtu.be/ZsHMHukIlJY)
-
-Additionally following rules apply
-### Identation
+## Readability
 Visual structure of the code should make it easy to understand the code.
 
-Always Wrap to the next line and indent by 4 to keep the visual strucure simple
-GOOD: 
+### Wrapping
+Always Wrap to the next line and indent by 4 to keep the visual strucure simple  
+BAD: (Not refactoring safe / creates lots of different margins in code)
+```csharp
+var customers = dbContext.Customers.Where(customer => customer.Company == company)
+                                   .Select(customer => customer.Name)
+                                   .AsNoTracking()
+                                   .SingleOrDefault(cancellationToken);
+```
+GOOD:
 ```csharp
 var customers = dbContext.Customers
     .Where(customer => customer.Company == company)
@@ -49,17 +37,8 @@ var customers = dbContext.Customers
     .SingleOrDefault(cancellationToken);
 ```
 
-BAD: (Not refactoring safe / creates lots of different margins in code)
-```csharp
-var customers = dbContext.Customers.Where(customer => customer.Company == company)
-                                   .Select(customer => customer.Name)
-                                   .AsNoTracking()
-                                   .SingleOrDefault(cancellationToken);
-```
-
 #### Parameters
 Wrap all or no parameters:
-
 GOOD:
 ```csharp
 public static async ValueTask LongMethodNameAsync(
@@ -68,14 +47,15 @@ public static async ValueTask LongMethodNameAsync(
     CancellationToken cancellationToken = default);
 ```
 
-BAD:
+BAD: No visual structure. Easy to overread parameters
 ```csharp
 public static async ValueTask LongMethodNameAsync(string text, int count,
     CancellationToken cancellationToken = default);
 ```
 
 #### LINQ
-Put every LINQ Operator in a new line
+Put every LINQ Operator in a new line.
+
 GOOD:
 ```csharp
 var items = myList
@@ -90,17 +70,14 @@ var items = myList.Where(x => x.IsGood)
     .Select(x => x.Name).FirstOrDefault();
 ```
 
-### 120 / 24 Rule
-Methods should not exceeed column 120 and in general should not consist of more than 20 lines. 
+### Follow the 100 / 24 rule
+* Do not exceed column 100.
+* Write short methods. Try not to exceed 24 lines of code.
 
-> Why 120
-> 
-> Allow side-by-side diffs. The actual number is defined by educated guess (screen size)
+### Order
+A consistent order helps to navigate through the code.
 
-### Code Ordering
-Try to keep consistent order in classes. (Stick with CodeMaid defaults).
-
-In general follow this order:
+Use CodeMaid's default ordering:
 * Fields
 * Constructors
 * Finalizers
@@ -112,35 +89,36 @@ In general follow this order:
 * Inner Structs
 * Inner Classes
 
-Order by `static` before instances, then by scope `public` to `private`, then by name (optional)
+Write `static` before non.static, then order by visibility from `public` to `private` 
 
 ### Regions
-`#endregions`. Avoid Regions. Regions are usually an indicator for bad code, use code constructs to structure code.
+Do not use Regions! `#endregions`
 
 ### Comments
-Do not write Ghost comments. Comments should provide value.
+In general comments should add value. Do not describe *what`the code does, describe *why*.
 
-#### Inline Comments
-Comment *why* the code does something, do not comment *what* the code does. Use variables and methods to name constructs in code!
-
-Keep in mind that comments are not refactoring safe, while methods are
+#### Use methods to name code blocks
+Section comments are a good indicator how to split code into smaller methods.
 
 BAD
 ```csharp
-// Get customer names at our city
-var customers = customers
-    .Where(c => c.Address.City == OurCity)
-    .ToList();
+// Read Data 
+var data = await _dbContext
+    .Where(x => x.Count > 42)
+    .ToListAsync();
+
+// Map to DTOs
+var dtos = data.Select(x => new Dto(x.Name, x.Value));
 ```
 
 GOOD
 ```csharp
-var customers = GetCustomersAtCity(OurCity);
+var data = await ReadDataAsync();
+var dtos = MapToDtos(data);
 ```
 
 #### XML Comments
-Write XML comments for public documentation. Omit comments if everything is clear! Do not write empty
-comments:
+Avoid empty XML comment blocks. Do not leak implementation details.
 
 BAD: Empty comment section
 ```csharp
@@ -150,18 +128,24 @@ BAD: Empty comment section
 /// <param name="parameter"></param>
 public void Method(string parameter);
 ```
-
-BETTER: No unused stuff
+GOOD: No unused XML
 ```csharp
 /// <summary>
 /// This method does something
 /// </summary>
 public void Method(string parameter);
 ```
+BAD: Leaks implementation details and not refactoring safe.
+```csharp
+/// <summary>
+/// The product id. Value: <c>MySuperProduct</c>
+/// </summary>
+public const string ProductId = "MySuperProduct"
+```
 
 ### Expression Bodied Members
-Expression Bodied Members are great for short single line methods. Avoid writing expression bodied
-members just becaus you can.
+Expression Bodied Members are great for short single line methods. However, in some cases it makes
+code harder to read. 
 
 GOOD: Clean single line method
 ```csharp
@@ -170,23 +154,28 @@ public void Save() => Save(_defaultFileName);
 
 BAD:
 ```csharp
-public int TooMuchCodeInExpression() => (DataSet
+public bool TooMuchCodeInExpression() => (DataSet
     .WithFluent()
     .AndEvenMoreFluent()
     .OrNull() ?? SomeOtherStuff()) + 27 == 12;
 ``` 
 
-#### Do not use Expression bodied methods with wrapped paramters
-Method content should be easyily distinguishable from parameters
+Acceptable - No Branching logic
+```csharp
+public int? GetOrderCount(string name) =>
+    _dbContext.Customers
+        .Where(x => x.Name == name)
+        .Select(x => x.OrderCount)
+        .SingleOrDefault().
+```
 
-BAD
+BAD - No Visual distinction between parameters and method body
 ```csharp
 public Task<int> MethodAsync(
     string veryLongString,
     CancellationToken cancellationToken = default) =>
     await DoSomethingAsync(veryLongString);
 ```
-
 GOOD
 ```csharp
 public Task<int> MethodAsync(
@@ -198,21 +187,18 @@ public Task<int> MethodAsync(
 ```
 
 ### Async / Await
-* Prefer using  `await` over directly returning `Task`, see
-* Support cancellation and pass `CancellationToken` when possible.
-* Read https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md
+* Prefer `await` over directly returning `Task`
+* Add `CancellationToken` parameter when possible
+* Use `CancellationToken` parameter when possible
 
-#### Do not hide asynchronous calls
-If method is `await`ed it deserves to be easily recognizable. Prefer multiple lines over hiding
-`await` in parenthesis.
-
-BAD
+#### Do not hide asynchronous code in paranthesis
+BAD: Async call hidden in expression
 ```csharp
-var count = (await GetDataAsync()).Count;
+var count = 37 * (await GetDataAsync()).Count;
 ```
 
-GOOD
+GOOD: 
 ```csharp
 var list = await GetDataAsync();
-var count = list.Count;
+var count = 37 * list.Count;
 ```
