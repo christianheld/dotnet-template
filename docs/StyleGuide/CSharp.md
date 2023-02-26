@@ -62,6 +62,7 @@ This will ensure, the code is easy to read and refactoring safe as renaming iden
 
 ### Parameters
 Wrap and indent all or no parameters:
+
 GOOD:
 ```csharp
 public void MethodName(
