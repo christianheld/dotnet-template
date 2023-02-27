@@ -33,7 +33,51 @@ Follow the [General Rules](./General.md).
 * AVOID to exceed column 100
 * DO write small chunks of code
 
-## Order
+### Blank Lines
+* DO NOT add multiple consecutive blank lines
+* DO add a blank line after a wrapped / multiline statement
+* DO add blank lines after code blocks, e.g. `for` or `if`
+* DO NOT add black line before `else` or `if else` blocks
+
+GOOD:
+```csharp
+public async Task<Item?> GetItemAsync(int id, CancellationToken cancellationToken)
+{
+    CheckId(id);
+    var item = await _service.GetItemAsync(
+        id,
+        true,
+        cancellationToken);
+    
+    if (item is null)
+    {
+        return null;
+    }
+
+    return MapToDto(item);
+}
+```
+
+BAD:
+```csharp
+public async Task<Item?> GetItemAsync(int id, CancellationToken cancellationToken)
+{
+    CheckId(id);
+    var item = await _service.GetItemAsync(
+        id,
+        true,
+        cancellationToken);    
+    if (item is null)
+    {
+        return null;
+    }
+
+
+    return MapToDto(item);
+}
+```
+
+### Order
 A consistent order helps to navigate through the code.
 
 Use CodeMaid's default ordering:
