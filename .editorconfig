@@ -4,6 +4,7 @@
 ## All files
 [*]
 indent_style = space
+indent_size = 2
 
 # XML project files
 [*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,projitems,shproj}]
@@ -60,7 +61,6 @@ dotnet_style_prefer_inferred_anonymous_type_member_names = true:suggestion
 dotnet_style_prefer_auto_properties = true:silent
 dotnet_style_prefer_conditional_expression_over_assignment = true:silent
 dotnet_style_prefer_conditional_expression_over_return = true:silent
-
 
 # Naming Conventions
 ## Non-private static fields are PascalCase
@@ -183,7 +183,6 @@ csharp_style_pattern_local_over_anonymous_function = true:suggestion
 csharp_style_inlined_variable_declaration = true:suggestion
 
 # C# Formatting Rules
-
 ## New line preferences
 csharp_new_line_before_open_brace = all
 csharp_new_line_before_else = true
@@ -241,9 +240,9 @@ csharp_style_prefer_top_level_statements = true:silent
 csharp_style_prefer_utf8_string_literals = true:suggestion
 
 # Code Analysis
-## Design rules
-dotnet_analyzer_diagnostic.category-Design.severity = warning
+dotnet_analyzer_diagnostic.severity = warning
 
+## Design rules
 dotnet_diagnostic.CA1001.severity = error
 dotnet_diagnostic.CA1003.severity = error
 
@@ -270,7 +269,6 @@ dotnet_diagnostic.CA1069.severity = error
 dotnet_diagnostic.CA1200.severity = error
 
 ## Globalization Rules
-dotnet_analyzer_diagnostic.category-Globalization.severity = warning
 dotnet_diagnostic.CA1308.severity = suggestion
 
 ## P/Invoke
@@ -284,13 +282,11 @@ dotnet_diagnostic.CA1507.severity = warning
 dotnet_diagnostic.CA1508.severity = warning
 
 ## Naming
-dotnet_analyzer_diagnostic.category-Naming.severity = warning
 dotnet_diagnostic.CA1715.severity = suggestion
 dotnet_diagnostic.CA1716.severity = none
 dotnet_diagnostic.CA1720.severity = suggestion
 
 ## Performance
-dotnet_analyzer_diagnostic.category-Performance.severity = warning
 dotnet_diagnostic.CA1806.severity = suggestion
 dotnet_diagnostic.CA1810.severity = suggestion
 dotnet_diagnostic.CA1824.severity = none
@@ -299,7 +295,7 @@ dotnet_diagnostic.CA1846.severity = suggestion
 dotnet_diagnostic.CA1848.severity = suggestion
 
 ## Reliabilty
-dotnet_analyzer_diagnostic.category-Reliability.severity = warning
+dotnet_analyzer_diagnostic.category-Reliabilty.severity = warning
 dotnet_diagnostic.CA2011.severity = error
 dotnet_diagnostic.CA2012.severity = error
 dotnet_diagnostic.CA2013.severity = error
@@ -309,7 +305,6 @@ dotnet_diagnostic.CA2016.severity = suggestion
 dotnet_analyzer_diagnostic.category-Security.severity = error
 
 ## Usage Rules
-dotnet_analyzer_diagnostic.category-Usage.severity = warning
 dotnet_diagnostic.CA1816.severity = error
 dotnet_diagnostic.CA2200.severity = error
 dotnet_diagnostic.CA2213.severity = error
@@ -333,6 +328,7 @@ dotnet_diagnostic.IDE0049.severity = warning
 dotnet_diagnostic.IDE0051.severity = warning
 dotnet_diagnostic.IDE0052.severity = warning
 dotnet_diagnostic.IDE0055.severity = warning
+dotnet_diagnostic.IDE0058.severity = none
 dotnet_diagnostic.IDE0059.severity = warning
 dotnet_diagnostic.IDE0060.severity = warning
 dotnet_diagnostic.IDE0076.severity = error
