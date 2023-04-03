@@ -324,6 +324,7 @@ dotnet_diagnostic.CA2218.severity = error
 ## IDE  Rules
 dotnet_analyzer_diagnostic.category-Style.severity = suggestion
 dotnet_diagnostic.IDE0005.severity = warning
+dotnet_diagnostic.IDE0007.severity = none
 dotnet_diagnostic.IDE0021.severity = none
 dotnet_diagnostic.IDE0022.severity = none
 dotnet_diagnostic.IDE0023.severity = none
