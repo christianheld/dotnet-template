@@ -4,24 +4,37 @@
 ## All files
 [*]
 indent_style = space
-indent_size = 2
+indent_size = 4
+
+[*.md]
+end_of_line = crlf
+trim_trailing_whitespace = false
 
 # XML project files
 [*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,projitems,shproj}]
-indent_size = 4
+charset = utf-8
+indent_size = 2
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
 
 # XML config files
 [*.{props,targets,ruleset,config,nuspec,resx,vsixmanifest,vsct}]
-indent_size = 4
+charset = utf-8
+indent_size = 2
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
 
 # Code files
 [*.{cs,csx,vb,vbx}]
+charset = utf-8
 indent_size = 4
 tab_width = 4
 guidelines = 100, 120
 max_line_length = 120
+trim_trailing_whitespace = true
 insert_final_newline = true
-charset = utf-8
 
 # .NET Coding Conventions
 [*.{cs,vb}]
