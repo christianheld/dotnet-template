@@ -161,6 +161,9 @@ csharp_style_var_for_built_in_types = true:silent
 csharp_style_var_when_type_is_apparent = true:warning
 csharp_style_var_elsewhere = true:silent
 
+## Namespaces
+csharp_style_namespace_declarations = file_scoped:suggestion
+
 ## Expression-bodied members
 csharp_style_expression_bodied_methods = when_on_single_line:silent
 csharp_style_expression_bodied_constructors = false:silent
