@@ -165,12 +165,12 @@ csharp_style_var_elsewhere = true:silent
 csharp_style_namespace_declarations = file_scoped:suggestion
 
 ## Expression-bodied members
-csharp_style_expression_bodied_methods = when_on_single_line:silent
-csharp_style_expression_bodied_constructors = false:silent
-csharp_style_expression_bodied_operators = false:silent
-csharp_style_expression_bodied_properties = true:silent
-csharp_style_expression_bodied_indexers = true:silent
-csharp_style_expression_bodied_accessors = true:silent
+csharp_style_expression_bodied_methods = when_on_single_line:suggestion
+csharp_style_expression_bodied_constructors = when_on_single_line:suggestion
+csharp_style_expression_bodied_operators = when_on_single_line:suggestion
+csharp_style_expression_bodied_properties = when_on_single_line:suggestion
+csharp_style_expression_bodied_indexers = when_on_single_line:suggestion
+csharp_style_expression_bodied_accessors = when_on_single_line:suggestion
 
 ## Pattern matching preferences
 csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
@@ -247,10 +247,11 @@ csharp_style_prefer_extended_property_pattern = true:suggestion
 csharp_style_prefer_top_level_statements = true:silent
 csharp_style_prefer_utf8_string_literals = true:suggestion
 
-# Code Analysis
-dotnet_analyzer_diagnostic.severity = warning
+# .NET Code Analysis
 
 ## Design rules
+dotnet_analyzer_diagnostic.category-Design.severity = warning
+
 dotnet_diagnostic.CA1001.severity = error
 dotnet_diagnostic.CA1003.severity = error
 
@@ -270,13 +271,16 @@ dotnet_diagnostic.CA1041.severity = error
 dotnet_diagnostic.CA1043.severity = suggestion
 dotnet_diagnostic.CA1050.severity = none
 dotnet_diagnostic.CA1058.severity = error
+dotnet_diagnostic.CA1062.severity = suggestion
 dotnet_diagnostic.CA1065.severity = error
 dotnet_diagnostic.CA1069.severity = error
 
 ## Documentation
+dotnet_analyzer_diagnostic.category-Documentation.severity = warning
 dotnet_diagnostic.CA1200.severity = error
 
 ## Globalization Rules
+dotnet_analyzer_diagnostic.category-Globalization.severity = warning
 dotnet_diagnostic.CA1308.severity = suggestion
 
 ## P/Invoke
@@ -290,11 +294,13 @@ dotnet_diagnostic.CA1507.severity = warning
 dotnet_diagnostic.CA1508.severity = warning
 
 ## Naming
+dotnet_analyzer_diagnostic.category-Naming.severity = warning
 dotnet_diagnostic.CA1715.severity = suggestion
 dotnet_diagnostic.CA1716.severity = none
 dotnet_diagnostic.CA1720.severity = suggestion
 
 ## Performance
+dotnet_analyzer_diagnostic.category-Performance.severity = warning
 dotnet_diagnostic.CA1806.severity = suggestion
 dotnet_diagnostic.CA1810.severity = suggestion
 dotnet_diagnostic.CA1824.severity = none
@@ -304,6 +310,7 @@ dotnet_diagnostic.CA1848.severity = suggestion
 
 ## Reliabilty
 dotnet_analyzer_diagnostic.category-Reliabilty.severity = warning
+dotnet_diagnostic.CA2007.severity = silent
 dotnet_diagnostic.CA2011.severity = error
 dotnet_diagnostic.CA2012.severity = error
 dotnet_diagnostic.CA2013.severity = error
@@ -313,6 +320,7 @@ dotnet_diagnostic.CA2016.severity = suggestion
 dotnet_analyzer_diagnostic.category-Security.severity = error
 
 ## Usage Rules
+dotnet_analyzer_diagnostic.category-Usage.severity = warning
 dotnet_diagnostic.CA1816.severity = error
 dotnet_diagnostic.CA2200.severity = error
 dotnet_diagnostic.CA2213.severity = error
@@ -342,3 +350,37 @@ dotnet_diagnostic.IDE0059.severity = warning
 dotnet_diagnostic.IDE0060.severity = warning
 dotnet_diagnostic.IDE0076.severity = error
 dotnet_diagnostic.IDE0077.severity = error
+
+# NUnit Analyzers
+## Assertion Rules (Do not force Assert.That)
+dotnet_diagnostic.NUnit2001.severity = none
+dotnet_diagnostic.NUnit2002.severity = none
+dotnet_diagnostic.NUnit2003.severity = none
+dotnet_diagnostic.NUnit2004.severity = none
+dotnet_diagnostic.NUnit2005.severity = none
+dotnet_diagnostic.NUnit2006.severity = none
+dotnet_diagnostic.NUnit2009.severity = none
+dotnet_diagnostic.NUnit2010.severity = none
+dotnet_diagnostic.NUnit2011.severity = none
+dotnet_diagnostic.NUnit2012.severity = none
+dotnet_diagnostic.NUnit2013.severity = none
+dotnet_diagnostic.NUnit2014.severity = none
+dotnet_diagnostic.NUnit2015.severity = none
+dotnet_diagnostic.NUnit2016.severity = none
+dotnet_diagnostic.NUnit2017.severity = none
+dotnet_diagnostic.NUnit2018.severity = none
+dotnet_diagnostic.NUnit2019.severity = none
+dotnet_diagnostic.NUnit2027.severity = none
+dotnet_diagnostic.NUnit2028.severity = none
+dotnet_diagnostic.NUnit2029.severity = none
+dotnet_diagnostic.NUnit2030.severity = none
+dotnet_diagnostic.NUnit2031.severity = none
+dotnet_diagnostic.NUnit2032.severity = none
+dotnet_diagnostic.NUnit2033.severity = none
+dotnet_diagnostic.NUnit2034.severity = none
+dotnet_diagnostic.NUnit2035.severity = none
+dotnet_diagnostic.NUnit2036.severity = none
+dotnet_diagnostic.NUnit2037.severity = none
+dotnet_diagnostic.NUnit2038.severity = none
+dotnet_diagnostic.NUnit2039.severity = none
+dotnet_diagnostic.NUnit2043.severity = none
