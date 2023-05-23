@@ -1,6 +1,8 @@
 # To learn more about .editorconfig see https://aka.ms/editorconfigdocs
 
 # Core EditorConfig Options
+root = true
+
 ## All files
 [*]
 charset = utf-8
