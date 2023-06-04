@@ -1,14 +1,12 @@
 # To learn more about .editorconfig see https://aka.ms/editorconfigdocs
 
-## General
-spelling_languages = en-us
-
 # Core EditorConfig Options
 root = true
 
 ## All files
 [*]
 charset = utf-8
+spelling_languages = en-us
 indent_style = space
 insert_final_newline = true
 
