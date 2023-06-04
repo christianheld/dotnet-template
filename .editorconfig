@@ -1,5 +1,8 @@
 # To learn more about .editorconfig see https://aka.ms/editorconfigdocs
 
+## General
+spelling_languages = en-us
+
 # Core EditorConfig Options
 root = true
 
@@ -312,7 +315,11 @@ dotnet_diagnostic.CA1848.severity = suggestion
 
 ## Reliabilty
 dotnet_analyzer_diagnostic.category-Reliabilty.severity = warning
-dotnet_diagnostic.CA2007.severity = silent
+
+dotnet_code_quality.CA2007.exclude_async_void_methods = true
+dotnet_diagnostic.CA2007.severity = warning
+dotnet_diagnostic.CA2008.severity = suggestion
+
 dotnet_diagnostic.CA2011.severity = error
 dotnet_diagnostic.CA2012.severity = error
 dotnet_diagnostic.CA2013.severity = error
@@ -386,3 +393,7 @@ dotnet_diagnostic.NUnit2037.severity = none
 dotnet_diagnostic.NUnit2038.severity = none
 dotnet_diagnostic.NUnit2039.severity = none
 dotnet_diagnostic.NUnit2043.severity = none
+
+# Generated Files
+[*.{d,D}esigner.cs]
+generated_code = true
