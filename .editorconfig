@@ -6,9 +6,10 @@ root = true
 ## All files
 [*]
 charset = utf-8
-spelling_languages = en-us
 indent_style = space
 insert_final_newline = true
+spelling_languages = en-us
+spelling_exclusion_path = ./exclusion.dic
 
 # XML project files
 [*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,projitems,shproj}]
