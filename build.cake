@@ -1,5 +1,4 @@
-#tool "dotnet:?package=GitVersion.Tool&version=5.10.3"
-#tool "dotnet:?package=dotnet-reportgenerator-globaltool&version=5.1.9"
+#tool "dotnet:?package=GitVersion.Tool&version=5.12.0"
 
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -12,7 +11,9 @@ var configuration = Argument("configuration", "Release");
 
 var dotNetVerbosity = DotNetVerbosity.Minimal;
 var msBuildSettings = new DotNetMSBuildSettings()
-        .SetMaxCpuCount(0);
+        .SetMaxCpuCount(0)
+        .TreatAllWarningsAs(MSBuildTreatAllWarningsAs.Error)
+        .WithArgumentCustomization(args => args.Append("-warnnotaserror:CS0618"));
 
 Setup(context =>
 {
@@ -48,7 +49,19 @@ Task("RestorePackages")
     DotNetRestore(new DotNetRestoreSettings { Verbosity = dotNetVerbosity });
 });
 
+Task("CheckFormatting")
+    .Does(() => 
+{
+    DotNetTool(
+        "format", 
+        new DotNetToolSettings()
+            .WithArgumentCustomization(args => args
+                .Append("whitespace")
+                .Append("--verify-no-changes")));
+});
+
 Task("Compile")
+    .IsDependentOn("CheckFormatting")
     .IsDependentOn("RestorePackages")
     .Does(() =>
 {
@@ -78,15 +91,6 @@ Task("Test")
           Collectors = { "XPlat Code Coverage" }
        }
     );
-});
-
-Task("TestReport")
-    .IsDependentOn("Test")
-    .Does(() => 
-{
-    ReportGenerator(
-        new GlobPattern("./tests/**/coverage.cobertura.xml"),
-        "./artifacts/TestReport");
 });
 
 Task("Default")

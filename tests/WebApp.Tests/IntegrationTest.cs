@@ -27,7 +27,7 @@ public class IntegrationTest
         Assert.Multiple(() =>
         {
             Assert.True(response.IsSuccessStatusCode);
-            Assert.Contains("Hello, World!", stringContent);
+            Assert.Contains("Hello, World!", stringContent, StringComparison.Ordinal);
         });
     }
 }
