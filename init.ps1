@@ -26,6 +26,13 @@ function RemoveSampleProjects {
     Remove-Item -Force -Recurse  .\tests\WebApp.Tests
 }
 
+function CleanPackagesProps 
+{
+    $packageProps = [xml](Get-Content .\Directory.Packages.props)
+    $packageProps.Project.RemoveChild($packageProps.Project.ItemGroup[1])
+    $packageProps.Save("./Directory.Packages.props")
+}
+
 function RenameSolution {
     $solution = "$SolutionName.sln"
     Rename-Item -Path ./NetProject.sln -NewName $solution
@@ -55,6 +62,7 @@ function CreateNewProject {
 }
 
 RemoveSampleProjects
+CleanPackagesProps
 RenameSolution
 CreateNewProject
 
