@@ -6,13 +6,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
-        <PackageReference Include="xunit" Version="2.5.0" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.5.0">
+        <PackageReference Include="Microsoft.NET.Test.Sdk"  />
+        <PackageReference Include="xunit"  />
+        <PackageReference Include="xunit.runner.visualstudio">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="coverlet.collector" Version="6.0.0">
+        <PackageReference Include="coverlet.collector" >
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
@@ -20,10 +20,5 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\NetProject\NetProject.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Update="GitVersion.MsBuild" Version="5.12.0" />
-    </ItemGroup>
-
+    </ItemGroup> 
 </Project>
