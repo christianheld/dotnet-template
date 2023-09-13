@@ -68,6 +68,8 @@ CreateNewProject
 
 Remove-Item .\init.ps1
 
+dotnet format
+
 .\build.ps1
 
 Write-Output "Commit changes to git to complete initialization."
