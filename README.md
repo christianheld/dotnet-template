@@ -2,7 +2,7 @@
 This is my personal, opinionated template for new .NET projects.
 
 ## Template Details
-The project layout is inspired by David Fowler's famous [.NET Project Structure](https://gist.github.com/davidfowl/ed7564297c61fe9ab814) gist.
+The project layout is inspired by the [.NET Project Structure](https://gist.github.com/davidfowl/ed7564297c61fe9ab814) gist.
 
 ### Configuration files
 * Explicit `global.json`, `nuget.config`
