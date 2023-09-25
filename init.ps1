@@ -65,8 +65,8 @@ CreateNewProject
 
 Remove-Item ./init.ps1
 
+dotnet restore
 dotnet format
-
-./build.ps1
+dotnet cake
 
 Write-Output "Commit changes to git to complete initialization."
