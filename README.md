@@ -25,5 +25,5 @@ GitVersion will also be installed by Cake to display Version in the Setup phase
 Run `init.ps1` to rename solution and remove sample code
 
 ```ps
-.\init.ps1 -Name SolutionName
+.\init.ps1 -SolutionName SolutionName
 ```
