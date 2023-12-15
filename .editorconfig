@@ -361,40 +361,6 @@ dotnet_diagnostic.IDE0060.severity = warning
 dotnet_diagnostic.IDE0076.severity = error
 dotnet_diagnostic.IDE0077.severity = error
 
-# NUnit Analyzers
-## Assertion Rules (Do not force Assert.That)
-dotnet_diagnostic.NUnit2001.severity = none
-dotnet_diagnostic.NUnit2002.severity = none
-dotnet_diagnostic.NUnit2003.severity = none
-dotnet_diagnostic.NUnit2004.severity = none
-dotnet_diagnostic.NUnit2005.severity = none
-dotnet_diagnostic.NUnit2006.severity = none
-dotnet_diagnostic.NUnit2009.severity = none
-dotnet_diagnostic.NUnit2010.severity = none
-dotnet_diagnostic.NUnit2011.severity = none
-dotnet_diagnostic.NUnit2012.severity = none
-dotnet_diagnostic.NUnit2013.severity = none
-dotnet_diagnostic.NUnit2014.severity = none
-dotnet_diagnostic.NUnit2015.severity = none
-dotnet_diagnostic.NUnit2016.severity = none
-dotnet_diagnostic.NUnit2017.severity = none
-dotnet_diagnostic.NUnit2018.severity = none
-dotnet_diagnostic.NUnit2019.severity = none
-dotnet_diagnostic.NUnit2027.severity = none
-dotnet_diagnostic.NUnit2028.severity = none
-dotnet_diagnostic.NUnit2029.severity = none
-dotnet_diagnostic.NUnit2030.severity = none
-dotnet_diagnostic.NUnit2031.severity = none
-dotnet_diagnostic.NUnit2032.severity = none
-dotnet_diagnostic.NUnit2033.severity = none
-dotnet_diagnostic.NUnit2034.severity = none
-dotnet_diagnostic.NUnit2035.severity = none
-dotnet_diagnostic.NUnit2036.severity = none
-dotnet_diagnostic.NUnit2037.severity = none
-dotnet_diagnostic.NUnit2038.severity = none
-dotnet_diagnostic.NUnit2039.severity = none
-dotnet_diagnostic.NUnit2043.severity = none
-
 # Generated Files
 [*.{d,D}esigner.cs]
 generated_code = true
