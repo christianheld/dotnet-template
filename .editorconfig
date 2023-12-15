@@ -157,6 +157,9 @@ dotnet_style_operator_placement_when_wrapping = beginning_of_line
 
 # C# Coding Conventions
 [*.cs]
+## Constructor preferences
+csharp_style_prefer_primary_constructors = true:suggestion
+
 ## var preferences
 csharp_style_var_for_built_in_types = true:silent
 csharp_style_var_when_type_is_apparent = true:warning
@@ -221,7 +224,7 @@ csharp_space_between_method_call_name_and_opening_parenthesis = false
 csharp_space_between_method_call_empty_parameter_list_parentheses = false
 
 ## Wrapping preferences
-csharp_preserve_single_line_statements = true
+csharp_preserve_single_line_statements = false
 csharp_preserve_single_line_blocks = true
 csharp_using_directive_placement = outside_namespace:suggestion
 csharp_prefer_simple_using_statement = true:suggestion
