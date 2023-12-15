@@ -306,11 +306,8 @@ dotnet_diagnostic.CA1720.severity = suggestion
 
 ## Performance
 dotnet_analyzer_diagnostic.category-Performance.severity = warning
-dotnet_diagnostic.CA1806.severity = suggestion
 dotnet_diagnostic.CA1810.severity = suggestion
 dotnet_diagnostic.CA1824.severity = none
-dotnet_diagnostic.CA1835.severity = suggestion
-dotnet_diagnostic.CA1846.severity = suggestion
 
 ## Reliabilty
 dotnet_analyzer_diagnostic.category-Reliabilty.severity = warning
