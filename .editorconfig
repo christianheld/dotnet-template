@@ -396,7 +396,7 @@ dotnet_diagnostic.IDE0072.severity = suggestion
 dotnet_diagnostic.IDE0075.severity = warning
 dotnet_diagnostic.IDE0076.severity = error
 dotnet_diagnostic.IDE0077.severity = error
-dotnet_diagnostic.IDE0078.severity = sugegstion
+dotnet_diagnostic.IDE0078.severity = suggestion
 dotnet_diagnostic.IDE0079.severity = error
 
 dotnet_diagnostic.IDE0080.severity = warning
