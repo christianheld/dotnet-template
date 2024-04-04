@@ -299,6 +299,7 @@ dotnet_diagnostic.CA1200.severity = error
 
 ## Globalization Rules
 dotnet_analyzer_diagnostic.category-Globalization.severity = warning
+dotnet_diagnostic.CA1303.severity = suggestion
 dotnet_diagnostic.CA1308.severity = suggestion
 
 ## P/Invoke
