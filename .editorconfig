@@ -459,6 +459,7 @@ dotnet_diagnostic.SA0001.severity = none
 
 dotnet_diagnostic.SA1000.severity = none
 dotnet_diagnostic.SA1009.severity = none
+dotnet_diagnostic.SA1010.severity = none
 dotnet_diagnostic.SA1011.severity = none
 
 dotnet_diagnostic.SA1101.severity = none
@@ -469,15 +470,20 @@ dotnet_diagnostic.SA1133.severity = suggestion
 dotnet_diagnostic.SA1200.severity = none
 dotnet_diagnostic.SA1206.severity = none
 
+dotnet_diagnostic.SA1308.severity = none
 dotnet_diagnostic.SA1309.severity = none
-dotnet_diagnostic.SX1309.severity = warning
+dotnet_diagnostic.SA1311.severity = none
 dotnet_diagnostic.SA1313.severity = none
 
 dotnet_diagnostic.SA1407.severity = none
 
 dotnet_diagnostic.SA1516.severity = none
 
+dotnet_diagnostic.SA1600.severity = none
+dotnet_diagnostic.SA1615.severity = none
+dotnet_diagnostic.SA1623.severity = none
 dotnet_diagnostic.SA1633.severity = none
+dotnet_diagnostic.SA1642.severity = none
 
 # Generated Files
 [*.{d,D}esigner.cs]
