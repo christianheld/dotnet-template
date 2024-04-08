@@ -454,6 +454,31 @@ dotnet_diagnostic.IDE0304.severity = suggestion
 dotnet_diagnostic.IDE0305.severity = warning
 dotnet_diagnostic.IDE1005.severity = warning
 
+## StyleCop
+dotnet_diagnostic.SA0001.severity = none
+
+dotnet_diagnostic.SA1000.severity = none
+dotnet_diagnostic.SA1009.severity = none
+dotnet_diagnostic.SA1011.severity = none
+
+dotnet_diagnostic.SA1101.severity = none
+dotnet_diagnostic.SA1122.severity = suggestion
+dotnet_diagnostic.SA1127.severity = suggestion
+dotnet_diagnostic.SA1133.severity = suggestion
+
+dotnet_diagnostic.SA1200.severity = none
+dotnet_diagnostic.SA1206.severity = none
+
+dotnet_diagnostic.SA1309.severity = none
+dotnet_diagnostic.SX1309.severity = warning
+dotnet_diagnostic.SA1313.severity = none
+
+dotnet_diagnostic.SA1407.severity = none
+
+dotnet_diagnostic.SA1516.severity = none
+
+dotnet_diagnostic.SA1633.severity = none
+
 # Generated Files
 [*.{d,D}esigner.cs]
 generated_code = true
