@@ -44,11 +44,13 @@ function CreateNewProject {
     
     Push-Location "./src/$ProjectName"
     dotnet new $ProjectType
+    dotnet add package Roslynator.Formatting.Analyzers
     Pop-Location
     
     Push-Location "./tests/$ProjectName.Tests"
     dotnet new xunit
     dotnet add reference "../../src/$ProjectName"
+    dotnet add package Roslynator.Formatting.Analyzers
     Pop-Location
     
     Get-ChildItem -Recurse *.csproj | ForEach-Object { dotnet sln add $_ }
@@ -65,7 +67,7 @@ CreateNewProject
 
 Remove-Item ./init.ps1
 
-dotnet restore
+dotnet tool restore
 dotnet format
 dotnet cake
 
