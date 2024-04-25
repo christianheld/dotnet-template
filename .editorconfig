@@ -455,6 +455,11 @@ dotnet_diagnostic.IDE0305.severity = warning
 dotnet_diagnostic.IDE1005.severity = warning
 
 ## StyleCop
+## StyleCop
+
+# Default severity for analyzer diagnostics with category 'StyleCop.CSharp.DocumentationRules'
+dotnet_analyzer_diagnostic.category-StyleCop.CSharp.DocumentationRules.severity = suggestion
+
 dotnet_diagnostic.SA0001.severity = none
 
 dotnet_diagnostic.SA1000.severity = none
