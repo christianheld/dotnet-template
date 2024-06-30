@@ -22,6 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{A5181A0E-B
 		.globalconfig = .globalconfig
 		build.cake = build.cake
 		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
 		GitVersion.yml = GitVersion.yml
 		global.json = global.json
 		nuget.config = nuget.config

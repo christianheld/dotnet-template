@@ -1,0 +1,5 @@
+T:System.DateTime;Use DateTimeOffset
+
+// Avoid Autofac
+N:Autofac;Use Microsoft.Extensions.DependencyInjection
+T:Autofac.ContainerBuilder;Use Microsoft.Extensions.DependencyInjection
