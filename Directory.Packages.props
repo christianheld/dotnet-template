@@ -1,0 +1,8 @@
+<Project>
+    <ItemGroup>
+        <GlobalPackageReference Include="Nerdbank.GitVersioning">
+            <PrivateAssets>all</PrivateAssets>
+            <Version>3.6.146</Version>
+        </GlobalPackageReference>
+    </ItemGroup>
+</Project>

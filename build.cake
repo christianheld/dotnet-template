@@ -1,4 +1,4 @@
-#tool "dotnet:?package=GitVersion.Tool&version=5.12.0"
+#addin nuget:?package=Cake.GitVersioning&version=3.6.146
 
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -17,10 +17,10 @@ var msBuildSettings = new DotNetMSBuildSettings()
 
 Setup(context =>
 {
-    var version = context.GitVersion();
+    var version = GitVersioningGetVersion();
 
     context.Information($"Solution: {solution}");
-    context.Information($"Version:  {version.FullSemVer}");
+    context.Information($"Version:  {version.SemVer2}");
 });
 
 ///////////////////////////////////////////////////////////////////////////////

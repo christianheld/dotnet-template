@@ -9,16 +9,8 @@ The project layout is inspired by the [.NET Project Structure](https://gist.gith
 * `Directory.Build.props` and `tests/Directory.Build.props` for cross-project configuration
 
 ### Automatic versioning
-This project uses [GitVersion](https://gitversion.net/) in *Mainline* mode. Using the MSBuild Task.
-GitVersion will also be installed by Cake to display Version in the Setup phase
-
-> WARNING:
-> 
-> **GitFlow**: If you use GitFlow then make sure run `.\tools\dotnet-gitversion.exe init` or `./tools/dotnet-gitversion init` and update the `GitVersion.yaml`
-> accordingly
-> 
-> **Mainline**: Do not set the `next-version` property in mainline mode. Use `git tag` instead to 
-> pin versions
+This project comes with [Nerdbank.GitVersioning](https://github.com/dotnet/Nerdbank.GitVersioning/)
+for automatic versioning.
 
 ## Getting Started
 
