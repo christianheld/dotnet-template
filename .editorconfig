@@ -10,23 +10,25 @@ indent_style = space
 insert_final_newline = true
 spelling_languages = en-us
 spelling_exclusion_path = ./exclusion.dic
+indent_size = 2
 
 # XML project files
 [*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,projitems,shproj}]
-indent_size = 2
 trim_trailing_whitespace = true
 
 # XML config files
 [*.{props,targets,ruleset,config,nuspec,resx,vsixmanifest,vsct}]
-ndent_size = 2
 trim_trailing_whitespace = true
 
 # Code files
-[*.{cs,csx,vb,vbx}]
+[*.{cs,csx,vb,vbx,cake}]
 indent_size = 4
 tab_width = 4
 max_line_length = 120
 guidelines = 100, 120
+trim_trailing_whitespace = true
+
+[*.proto]
 trim_trailing_whitespace = true
 
 # .NET Coding Conventions
@@ -316,7 +318,7 @@ dotnet_diagnostic.CA1824.severity = none
 dotnet_analyzer_diagnostic.category-Reliabilty.severity = warning
 
 dotnet_code_quality.CA2007.exclude_async_void_methods = true
-dotnet_diagnostic.CA2007.severity = warning
+dotnet_diagnostic.CA2007.severity = none
 dotnet_diagnostic.CA2008.severity = suggestion
 
 dotnet_diagnostic.CA2011.severity = error
@@ -368,7 +370,7 @@ dotnet_diagnostic.IDE0041.severity = suggestion
 dotnet_diagnostic.IDE0042.severity = suggestion
 dotnet_diagnostic.IDE0044.severity = warning
 dotnet_diagnostic.IDE0045.severity = suggestion
-dotnet_diagnostic.IDE0046.severity = suggestion
+dotnet_diagnostic.IDE0046.severity = none
 dotnet_diagnostic.IDE0047.severity = warning
 dotnet_diagnostic.IDE0048.severity = warning
 dotnet_diagnostic.IDE0049.severity = warning
@@ -396,7 +398,7 @@ dotnet_diagnostic.IDE0075.severity = warning
 dotnet_diagnostic.IDE0076.severity = error
 dotnet_diagnostic.IDE0077.severity = error
 dotnet_diagnostic.IDE0078.severity = suggestion
-dotnet_diagnostic.IDE0079.severity = error
+dotnet_diagnostic.IDE0079.severity = none # Visual Studio generates false positives
 
 dotnet_diagnostic.IDE0080.severity = warning
 dotnet_diagnostic.IDE0082.severity = warning
@@ -442,74 +444,93 @@ dotnet_diagnostic.IDE0301.severity = warning
 dotnet_diagnostic.IDE0302.severity = warning
 dotnet_diagnostic.IDE0303.severity = warning
 dotnet_diagnostic.IDE0304.severity = suggestion
-dotnet_diagnostic.IDE0305.severity = warning
+dotnet_diagnostic.IDE0305.severity = suggestion
 dotnet_diagnostic.IDE1005.severity = warning
 
 ## Roslynator Formatting
-dotnet_diagnostic.rcs0001.severity = warning
-dotnet_diagnostic.rcs0003.severity = warning
-dotnet_diagnostic.rcs0007.severity = warning
-dotnet_diagnostic.rcs0008.severity = warning
-dotnet_diagnostic.rcs0009.severity = warning
-dotnet_diagnostic.rcs0010.severity = warning
+dotnet_diagnostic.RCS0001.severity = warning
+dotnet_diagnostic.RCS0003.severity = warning
+dotnet_diagnostic.RCS0007.severity = warning
+dotnet_diagnostic.RCS0008.severity = warning
+dotnet_diagnostic.RCS0009.severity = warning
+dotnet_diagnostic.RCS0010.severity = warning
 
 roslynator_blank_line_between_single_line_accessors = false
-dotnet_diagnostic.rcs0011.severity = warning
+dotnet_diagnostic.RCS0011.severity = warning
 
 roslynator_blank_line_between_using_directives = separate_groups
-dotnet_diagnostic.rcs0015.severity = warning
+dotnet_diagnostic.RCS0015.severity = warning
 
 roslynator_accessor_braces_style = single_line_when_expression_is_on_single_line
-dotnet_diagnostic.rcs0020.severity = suggestion
+dotnet_diagnostic.RCS0020.severity = suggestion
 
 roslynator_block_braces_style = multi_line
-dotnet_diagnostic.rcs0021.severity = warning
+dotnet_diagnostic.RCS0021.severity = warning
 
-dotnet_diagnostic.rcs0023.severity = warning
-dotnet_diagnostic.rcs0025.severity = warning
+dotnet_diagnostic.RCS0023.severity = warning
+dotnet_diagnostic.RCS0025.severity = warning
 
 roslynator_binary_operator_new_line = after
-dotnet_diagnostic.rcs0027.severity = warning
+dotnet_diagnostic.RCS0027.severity = warning
 
 roslynator_conditional_operator_new_line = before
-dotnet_diagnostic.rcs0028.severity = warning
+dotnet_diagnostic.RCS0028.severity = warning
 
-dotnet_diagnostic.rcs0029.severity = warning
-dotnet_diagnostic.rcs0030.severity = warning
-dotnet_diagnostic.rcs0031.severity = warning
+dotnet_diagnostic.RCS0029.severity = warning
+dotnet_diagnostic.RCS0031.severity = warning
 
 roslynator_arrow_token_new_line = after
-dotnet_diagnostic.rcs0032.severity = warning
+dotnet_diagnostic.RCS0032.severity = warning
 
-dotnet_diagnostic.rcs0033.severity = warning
-dotnet_diagnostic.rcs0041.severity = warning
-dotnet_diagnostic.rcs0042.severity = warning
-dotnet_diagnostic.rcs0049.severity = warning
-dotnet_diagnostic.rcs0050.severity = warning
+dotnet_diagnostic.RCS0033.severity = warning
+dotnet_diagnostic.RCS0041.severity = warning
+dotnet_diagnostic.RCS0042.severity = warning
+dotnet_diagnostic.RCS0049.severity = warning
+dotnet_diagnostic.RCS0050.severity = warning
 
 roslynator_new_line_before_while_in_do_statement = false
-dotnet_diagnostic.rcs0051.severity = warning
+dotnet_diagnostic.RCS0051.severity = warning
 
 roslynator_equals_token_new_line = after
-dotnet_diagnostic.rcs0052.severity = warning
+dotnet_diagnostic.RCS0052.severity = warning
 
-dotnet_diagnostic.rcs0053.severity = warning
-dotnet_diagnostic.rcs0054.severity = warning
+dotnet_diagnostic.RCS0053.severity = warning
+dotnet_diagnostic.RCS0054.severity = warning
 
 roslynator_max_line_length = 120
-dotnet_diagnostic.rcs0056.severity = warning
+dotnet_diagnostic.RCS0056.severity = warning
 
-dotnet_diagnostic.rcs0057.severity = warning
+dotnet_diagnostic.RCS0057.severity = warning
 
 roslynator_new_line_at_end_of_file = true
-dotnet_diagnostic.rcs0058.severity = warning
+dotnet_diagnostic.RCS0058.severity = warning
 
 roslynator_null_conditional_operator_new_line = before
-dotnet_diagnostic.rcs0059.severity = warning
+dotnet_diagnostic.RCS0059.severity = warning
 
 roslynator_blank_line_after_file_scoped_namespace_declaration = true
-dotnet_diagnostic.rcs0060.severity = warning
+dotnet_diagnostic.RCS0060.severity = warning
+dotnet_diagnostic.RCS0063.severity = warning
 
-# Generated Files
+dotnet_diagnostic.RC10001.severity = warning
+dotnet_diagnostic.RC10003.severity = warning
+
+dotnet_diagnostic.RCS1021.severity = none
+dotnet_diagnostic.RCS1036.severity = none
+dotnet_diagnostic.RCS1046.severity = warning
+
+dotnet_diagnostic.RCS1110.severity = warning
+dotnet_diagnostic.RCS1124.severity = none
+dotnet_diagnostic.RCS1170.severity = warning
+
+dotnet_diagnostic.RCS1234.severity = warning
+dotnet_diagnostic.RCS1251.severity = silent
+dotnet_diagnostic.RCS1261.severity = warning
+dotnet_diagnostic.RCS1281.severity = warning
+
+# Exceptions
 [*.{d,D}esigner.cs]
+generated_code = true
+
+[GlobalSuppressions.cs]
 generated_code = true
