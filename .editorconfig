@@ -313,6 +313,7 @@ dotnet_diagnostic.CA1724.severity = suggestion
 dotnet_analyzer_diagnostic.category-Performance.severity = warning
 dotnet_diagnostic.CA1810.severity = suggestion
 dotnet_diagnostic.CA1824.severity = none
+dotnet_code_quality.CA1826.exclude_ordefault_methods = true
 
 ## Reliabilty
 dotnet_analyzer_diagnostic.category-Reliabilty.severity = warning
