@@ -277,6 +277,7 @@ dotnet_diagnostic.CA1032.severity = suggestion
 dotnet_diagnostic.CA1041.severity = error
 dotnet_diagnostic.CA1043.severity = suggestion
 dotnet_diagnostic.CA1058.severity = error
+dotnet_diagnostic.CA1062.severity = suggestion # Null checks, enable for libraries
 dotnet_diagnostic.CA1063.severity = error
 dotnet_diagnostic.CA1065.severity = error
 dotnet_diagnostic.CA1069.severity = error
@@ -318,7 +319,7 @@ dotnet_code_quality.CA1826.exclude_ordefault_methods = true
 dotnet_analyzer_diagnostic.category-Reliabilty.severity = warning
 
 dotnet_code_quality.CA2007.exclude_async_void_methods = true
-dotnet_diagnostic.CA2007.severity = none
+dotnet_diagnostic.CA2007.severity = none # Force ConfigureAwait: Enable for libraries
 dotnet_diagnostic.CA2008.severity = suggestion
 
 dotnet_diagnostic.CA2011.severity = error
