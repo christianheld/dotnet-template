@@ -69,6 +69,6 @@ Remove-Item ./init.ps1
 
 dotnet tool restore
 dotnet format
-dotnet cake
+dotnet run cake.cs
 
 Write-Output "Commit changes to git to complete initialization."

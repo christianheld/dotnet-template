@@ -1,4 +1,5 @@
-#addin nuget:?package=Cake.GitVersioning&version=3.6.146
+#:sdk Cake.Sdk
+#:package Cake.GitVersioning
 
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -35,7 +36,7 @@ Task("CleanArtifacts")
 
 Task("Clean")
    .WithCriteria(c => HasArgument("rebuild"))
-   .Does(() => 
+   .Does(() =>
 {
    var objs = GetDirectories($"./**/obj");
    var bins = GetDirectories($"./**/bin");
@@ -50,10 +51,10 @@ Task("RestorePackages")
 });
 
 Task("CheckFormatting")
-    .Does(() => 
+    .Does(() =>
 {
     DotNetTool(
-        "format", 
+        "format",
         new DotNetToolSettings()
             .WithArgumentCustomization(args => args
                 .Append("whitespace")

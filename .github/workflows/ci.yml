@@ -18,9 +18,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 9.0.x
-    - name: Restore local tools
-      run: dotnet tool restore
+        dotnet-version: 10.0.x
     - name: Build
-      run: dotnet cake
+      run: dotnet run cake.cs
  
