@@ -30,12 +30,12 @@ function RenameSolution {
     $solution = "$SolutionName.slnx"
     Rename-Item -Path ./NetProject.slnx -NewName $solution
     
-    $cakeScript = Get-Content ./build.cake
+    $cakeScript = Get-Content ./cake.cs
     $cakeScript = $cakeScript.Replace(
         'string solution = "NetProject.slnx";', 
         "string solution = ""$solution"";");
     
-    $cakeScript | Out-File "build.cake" -Encoding utf8NoBOM
+    $cakeScript | Out-File "cake.cs" -Encoding utf8NoBOM
 }
 
 function CreateNewProject {
@@ -67,7 +67,6 @@ CreateNewProject
 
 Remove-Item ./init.ps1
 
-dotnet tool restore
 dotnet format
 dotnet run cake.cs
 
