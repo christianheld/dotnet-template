@@ -8,7 +8,7 @@ public class IntegrationTest
     public async Task ReturnsHelloWorld()
     {
         // Arrange
-        using var webapp = new WebApplicationFactory<Program>()
+        await using var webapp = new WebApplicationFactory<Program>()
             .WithWebHostBuilder(builder =>
             {
                 builder.ConfigureServices(services =>
