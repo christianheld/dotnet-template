@@ -27,12 +27,12 @@ function RemoveSampleProjects {
 }
 
 function RenameSolution {
-    $solution = "$SolutionName.sln"
-    Rename-Item -Path ./NetProject.sln -NewName $solution
+    $solution = "$SolutionName.slnx"
+    Rename-Item -Path ./NetProject.slnx -NewName $solution
     
     $cakeScript = Get-Content ./build.cake
     $cakeScript = $cakeScript.Replace(
-        'string solution = "NetProject.sln";', 
+        'string solution = "NetProject.slnx";', 
         "string solution = ""$solution"";");
     
     $cakeScript | Out-File "build.cake" -Encoding utf8NoBOM

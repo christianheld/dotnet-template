@@ -5,7 +5,7 @@
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
 
-string solution = "NetProject.sln";
+string solution = "NetProject.slnx";
 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
