@@ -430,6 +430,9 @@ dotnet_diagnostic.RCS0029.severity = warning
 dotnet_diagnostic.RCS0031.severity = warning
 
 roslynator_arrow_token_new_line = after
+roslynator_use_block_body_when_declaration_spans_over_multiple_lines = true
+roslynator_use_block_body_when_expression_spans_over_multiple_lines = true
+
 dotnet_diagnostic.RCS0032.severity = warning
 
 dotnet_diagnostic.RCS0033.severity = warning
@@ -471,10 +474,13 @@ dotnet_diagnostic.RCS1046.severity = warning
 
 dotnet_diagnostic.RCS1110.severity = warning
 dotnet_diagnostic.RCS1124.severity = none
+
 dotnet_diagnostic.RCS1170.severity = warning
 dotnet_diagnostic.RCS1177.severity = none
 
 dotnet_diagnostic.RCS1234.severity = warning
+dotnet_diagnostic.RCS1238.severity = warning
+
 dotnet_diagnostic.RCS1251.severity = silent
 dotnet_diagnostic.RCS1261.severity = warning
 dotnet_diagnostic.RCS1281.severity = warning
