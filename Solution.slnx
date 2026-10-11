@@ -13,12 +13,7 @@
     <File Path="README.md" />
   </Folder>
   <Folder Name="/src/">
-    <Project Path="src/NetProject/NetProject.csproj" />
-    <Project Path="src/WebApp/WebApp.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <File Path="tests/Directory.Build.props" />
-    <Project Path="tests/NetProject.Tests/NetProject.Tests.csproj" />
-    <Project Path="tests/WebApp.Tests/WebApp.Tests.csproj" />
   </Folder>
 </Solution>

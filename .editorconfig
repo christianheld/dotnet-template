@@ -300,6 +300,7 @@ dotnet_analyzer_diagnostic.category-Maintainability.severity = error
 dotnet_diagnostic.CA1501.severity = warning
 dotnet_diagnostic.CA1507.severity = warning
 dotnet_diagnostic.CA1508.severity = warning
+dotnet_diagnostic.CA1515.severity = suggestion
 
 ## Naming
 dotnet_analyzer_diagnostic.category-Naming.severity = warning

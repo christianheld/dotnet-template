@@ -1,72 +1,24 @@
-#!/usr/bin/env pwsh
-
-# .SYNOPSIS
-# Inititalize the repository
-
-Param(
-  # The name of the new solution
-  [Parameter(Mandatory = $true)]
-  [string] $SolutionName,
-
-  # The project type, used for dotent new
-  [Parameter(Mandatory = $true)]
-  [string] $ProjectType,
-
-  [Parameter(Mandatory = $true)]
-  [string] $ProjectName
+[CmdletBinding()]
+param (
+    [Parameter(Mandatory = $true, Position = 0)]
+    [string]
+    $SolutionName
 )
 
-function RemoveSampleProjects {
-  Get-ChildItem -Recurse -Force *.csproj | ForEach-Object { dotnet sln remove $_ }
-    
-  Remove-Item -Force -Recurse  ./src/NetProject
-  Remove-Item -Force -Recurse  ./src/WebApp
-    
-  Remove-Item -Force -Recurse  ./tests/NetProject.Tests
-  Remove-Item -Force -Recurse  ./tests/WebApp.Tests
-}
+$solution = "$SolutionName.slnx"
 
-function RenameSolution {
-  $solution = "$SolutionName.slnx"
-  Rename-Item -Path ./NetProject.slnx -NewName $solution
-    
-  $cakeScript = Get-Content ./cake.cs
-  $cakeScript = $cakeScript.Replace(
-    'string solution = "NetProject.slnx";', 
-    "string solution = ""$solution"";");
-    
-  $cakeScript | Out-File "cake.cs" -Encoding utf8NoBOM
-}
+Rename-Item -Path ./Solution.slnx -NewName $solution
 
-function CreateNewProject {
-  mkdir "./src/$ProjectName"
-  mkdir "./tests/$ProjectName.Tests"
-    
-  Push-Location "./src/$ProjectName"
-  dotnet new $ProjectType
-  Pop-Location
-    
-  Push-Location "./tests/$ProjectName.Tests"
-  dotnet new xunit
-  dotnet add reference "../../src/$ProjectName"
-  Pop-Location
-    
-  Get-ChildItem -Recurse *.csproj | ForEach-Object { dotnet sln add $_ }
-}
+$cakeScript = Get-Content -Path ./cake.cs
+$cakeScript = $cakeScript.Replace('string solution = "Solution.slnx";', "string solution = $solution;")
+$cakeScript | Out-File "./cake.cs" -Encoding utf8NoBOM
 
-function ReplaceReadme {
-  Move-Item -Path ./README.template.md -Destination ./README.md -Force
-}
+mkdir -Force -Path src
+mkdir -Force -Path tests
 
-ReplaceReadme
-RemoveSampleProjects
-RenameSolution
-CreateNewProject
+Remove-Item -Force -Recurse ./.git
+git init
+git add .
+git commit -m "Hello, ${SolutionName}!";
 
 Remove-Item ./init.ps1
-
-# Broken by CPM
-# dotnet format
-# dotnet run cake.cs
-
-Write-Output "Commit changes to git to complete initialization."

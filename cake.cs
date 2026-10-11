@@ -1,11 +1,11 @@
 #:sdk Cake.Sdk
-#:package Cake.GitVersioning
+#:package Cake.GitVersioning@3.10.94
 
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
 
-string solution = "NetProject.slnx";
+string solution = "Solution.slnx";
 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
@@ -36,7 +36,6 @@ Task("CleanArtifacts")
     });
 
 Task("Clean")
-    .WithCriteria(c => HasArgument("rebuild"))
     .Does(() =>
     {
         var objs = GetDirectories($"./**/obj");
@@ -86,17 +85,22 @@ Task("Test")
             solution,
             new DotNetTestSettings
             {
+                PathType = DotNetTestPathType.Solution,
                 Configuration = configuration,
                 NoRestore = true,
                 NoBuild = true,
                 Verbosity = dotNetVerbosity,
-                Collectors = { "XPlat Code Coverage" }
+                ResultsDirectory = "./artifacts/test-results",
+                ArgumentCustomization = args => args
+                    .Append("--coverage")
+                    .Append("--report-xunit-trx")
             }
         );
     });
 
 Task("Default")
     .IsDependentOn("CleanArtifacts")
+    .IsDependentOn("Clean")
     .IsDependentOn("Test");
 
 RunTarget(target);
