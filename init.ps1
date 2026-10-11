@@ -10,7 +10,7 @@ $solution = "$SolutionName.slnx"
 Rename-Item -Path ./Solution.slnx -NewName $solution
 
 $cakeScript = Get-Content -Path ./cake.cs
-$cakeScript = $cakeScript.Replace('string solution = "Solution.slnx";', "string solution = $solution;")
+$cakeScript = $cakeScript.Replace('string solution = "Solution.slnx";', "string solution = `"$solution`";")
 $cakeScript | Out-File "./cake.cs" -Encoding utf8NoBOM
 
 mkdir -Force -Path src
